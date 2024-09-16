@@ -16,8 +16,9 @@ class Entity {
 
     fight(Entity, damage) {
         let dmg = Math.floor(Math.max(damage - Entity.defense, 1))
+        let old = Entity.hp
         Entity.hp = Entity.hp - dmg
-        return (this.ai ? "The " + this.ai + " attacks you!" : "You attack " + Entity.ai + "!") + " (" + dmg + " damage dealt)"
+        return (this.ai ? "The " + this.ai + " attacks you!" : "You attack " + Entity.ai + "!") + " (" + Math.max(old, dmg) + " damage dealt)"
     }
 
     think(DungeonGame) {
